@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Detection</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<style>
+    .div_center {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+      }
+</style>
+<body>
+    <div  class="card bg-light mb-3 div_center mt-5" style="max-width: 30rem;">
+    <center><h3 class="m-3">Upload Image</h3></center>
+    <form action="" method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="image" id="inputGroupFile01">
+              <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            </div>
+          </div>
+        <input class="mt-4 btn btn-dark btn-lg btn-block"  id="image" type="submit" value="Detect Image" />
+    </form>
+        {% if first_name %}
+        <center><h4>Result</h4></center>
+        <table class="table table-striped table-dark mt-4">
+            <thead>
+              <tr>
+                <th scope="col">Assumption</th>
+                <th scope="col">Name</th>
+                <th scope="col">Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">First</th>
+                <td>{{first_name}}</td>
+                <td>{{first_percent}}%</td>
+              </tr>
+              <tr>
+                <th scope="row">Second</th>
+                <td>{{second_name}}</td>
+                <td>{{second_percent}}%</td>
+              </tr>
+              <tr>
+                <th scope="row">Third</th>
+                <td>{{third_name}}</td>
+                <td>{{third_percent}}%</td>
+              </tr>
+            </tbody>
+          </table>
+          <center><img src="{{image_path}}" class="mt-4" style="height: 300px;width:300px;border-radius:20%"/></center>
+    {% endif %}
+</div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>
